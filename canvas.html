@@ -2,8 +2,39 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
+  <title>Canvas</title>
+  <style>
+        *{
+          margin:0;
+          padding:0;
+          box-sizing: border-box;
+          font-family-sans-serif;
+        }
+    main{
+      display:flex;
+      flex-direction:column;
+      align-item:center;
+      justify-content:center;
+      min-height:100vh;
+    }
+    canvas{
+      border:1px solid #444;
+      margin:botton: 2rem;
+    }      
+    </style>
 </head>
 <body>
+
+  <main>
+    <canvas></canvas>
+    <div class="controls">
+      <label for="density">
+        <input type="range" min="0" max="1" step="0.1" value="0"/>
+        <span></span>
+      </label>
+      <button id="generate">Generate</button>
+    </div>
+  </main>
 
   <canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
   Your browser does not support the HTML canvas tag.</canvas>
