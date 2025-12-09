@@ -64,19 +64,6 @@ density_label.innerText = decimalToPercent(density, density_input.getAttribute('
 
 const generate_button = document.querySelector('#generate');
 
-density_input.addEventListerner('input', () => {
-	density = density_input.value;
-	density_label.innerText = decimalToPercent(density, density_input.getAttribute('max'));
-	GenerateGrid();
-});
-
-generate_button.addEventListener('click', () => {
-	GenerateGrid();
-	DrawGrid();
-});
-
-const grid = [];
-
 function GenerateGrid(){
 	for(let col = 0; col < cols; col++){
 		grid[col] = [];
@@ -94,13 +81,27 @@ function DrawGrid(){
 		}
 	}
 }
+	
+function decimalToPercent(decimal, max){
+	return (decimal / max * 100)+"%";
+}
+
+density_input.addEventListerner('input', () => {
+	density = density_input.value;
+	density_label.innerText = decimalToPercent(density, density_input.getAttribute('max'));
+	GenerateGrid();
+});
+
+generate_button.addEventListener('click', () => {
+	GenerateGrid();
+	DrawGrid();
+});
+
+const grid = [];
 
 GenerateGrid();
 DrawGrid();
-
-function decimalToPercent(decimal, max){
-	return (decimal / max * 100)+"%";
-}	
+	
 </script>
   
 </body>
