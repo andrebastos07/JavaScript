@@ -19,7 +19,7 @@
     }
     canvas{
       border:1px solid #444;
-      margin:botton: 2rem;
+      margin-botton: 2rem;
     }      
     </style>
 </head>
@@ -70,10 +70,10 @@ density_input.addEventListerner('input', () => {
 	GenerateGrid();
 });
 
-generate_button.addEventListener('click', () =>
+generate_button.addEventListener('click', () => {
 	GenerateGrid();
 	DrawGrid();
-);
+});
 
 const grid = [];
 
