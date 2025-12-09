@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+<meta charset="utf-8">
+  <title>Grid Canvas</title>
+  <style>
+        *{
+          
+        }
+body { /* Ou qualquer contêiner pai */
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;     /* Centraliza verticalmente */
+  height: 100vh;           /* Faz o body ocupar a altura total da tela */
+}
+    canvas{
+      border:3px solid #444;
+    }      
+    </style>
+    <script type="application/javascript">
+      function draw() {
+	const cellSize = 10;
+	/*const cols = 15;
+	const rows = 15;*/
+        var canvas = document.getElementById("canvas");
+        if (canvas.getContext) {
+	canvas.width = 640;
+	canvas.height = 360;
+          var ctx = canvas.getContext("2d");
+
+          
+	for(let col = 0; col < canvas.width; col++){
+	for(let row = 0; row < canvas.height; row++){
+	if(Math.random() < 0.5){
+	ctx.fillStyle = "rgb(0,200,0)";
+	}else{ 
+	ctx.fillStyle = "rgb(0,0,200)";
+	}
+          ctx.fillRect(col * 10, row * 10, cellSize , cellSize);
+	}}
+
+        }
+      }
+    </script>
+  </head>
+  <body onload="draw();">
+    <canvas id="canvas" width="150" height="150"></canvas>
+  </body>
+</html>
