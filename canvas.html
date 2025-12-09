@@ -8,7 +8,7 @@
           margin:0;
           padding:0;
           box-sizing: border-box;
-          font-family-sans-serif;
+          font-family:sans-serif;
         }
     main{
       display:flex;
@@ -28,7 +28,7 @@
   <main>
     <canvas></canvas>
     <div class="controls">
-      <label for="density">
+      <label id="density">
         <input type="range" min="0" max="1" step="0.1" value="0"/>
         <span></span>
       </label>
@@ -36,7 +36,8 @@
     </div>
   </main>
 
-  <canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
+  <!--
+	<canvas id="myCanvas" width="200" height="100" style="border:1px solid #d3d3d3;">
   Your browser does not support the HTML canvas tag.</canvas>
 
   <script>
@@ -45,6 +46,63 @@
     ctx.font = "30px Arial";
     ctx.fillText("Hello World",10,50);
   </script>
+	-->
+<script>
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+const width = canvas.width = 640;
+const height = canvas.height = width/(16/9);
+const cellSize = 8;
+const cols = Mathf.floor(width - cellSize);
+const rows = mathf.floor(hegiht - cellSize);
+
+let density = 0.5;
+const density_input = documenty.querySelector('#density input');
+const density_label = documenty.querySelector('#density span');
+density_input.value = density;
+density_label.innerText = decimalToPercent(density, density_input.getAttribute('max'));
+
+const generate_button = document.querySelector('#generate');
+
+density_input.addEventListerner('input', () => {
+density = density_input.value;
+density_label.innerText = decimalToPercent(density, density_input.getAttribute('max'));
+GenerateGrid();
+});
+
+generate_button.addEventListener('click', () =>
+GenerateGrid();
+DrawGrid();
+);
+
+const grid = [];
+
+function GenerateGrid(){
+for(let col = 0; col < cols; col++){
+grid[col] = [];
+for(let row = 0; row < rows; row++){
+grid[col][rows] = Math.random() < density ? 1 : 0;
+}
+}
+}
+
+function DrawGrid(){
+for(let col = 0; col < cols; col++){
+grid[col] = [];
+for(let row = 0; row < rows; row++){
+ctx.fillStyle = grid[col][row] ? '#000' : '#FFF';
+ctx.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
+}
+}
+}
+
+GenerateGrid();
+DrawGrid();
+
+function decimalToPercent(decimal, max){
+return (decimal / max * 100)+"%";
+}	
+</script>
   
 </body>
 </html>
