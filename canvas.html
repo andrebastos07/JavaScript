@@ -57,8 +57,8 @@ const cols = Math.floor(width - cellSize);
 const rows = Math.floor(height - cellSize);
 
 let density = 0.5;
-const density_input = documenty.querySelector('#density input');
-const density_label = documenty.querySelector('#density span');
+const density_input = document.querySelector('#density input');
+const density_label = document.querySelector('#density span');
 density_input.value = density;
 density_label.innerText = decimalToPercent(density, density_input.getAttribute('max'));
 
