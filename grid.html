@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas de largura igual */
+    /*gap: 10px;  Espaçamento entre as células */
+    border: 1px solid black;
+    /*padding: 10px;*/
+  }
+  .grid-item {
+    background-color: lightblue;
+    border: 1px solid blue;
+    padding: 20px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div id="grid-container" class="grid-container">
+    <!-- Itens serão adicionados pelo JS -->
+  </div>
+
+  <script>
+    const container = document.getElementById('grid-container');
+    const numItems = 9; // 3x3 grid
+
+    for (let i = 1; i <= numItems; i++) {
+      const item = document.createElement('div');
+      item.className = 'grid-item';
+      item.textContent = `Item ${i}`;
+      container.appendChild(item);
+    }
+  </script>
+</body>
+</html>
